@@ -1,9 +1,15 @@
 export default class SimpleAdditionService implements AdditionService {
-  add(additionUnits: number[]) {
-    let result = 0;
-    additionUnits.forEach(x => result = x + result);
+  add(additionUnits: number[]): number {
+   // let result = 0;
+   // additionUnits.forEach(x => result = x + result);
 
-    return result;
+   // return result;
+   // doing new validation for ensuring all elements are numbers
+   if (!additionUnits.every(unit => typeof unit === 'number')) {
+     throw new Error('all elements must be numbers'):
+   }
+
+   return additionUnits.reduce((result, current) => result + current, 0);
   }
 }
 
